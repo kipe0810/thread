@@ -1,0 +1,13 @@
+<%= current_user.name %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2 post-index">
+			<h1 class="post-index-headline">投稿一覧</h1>
+			<% @posts.each do |f| %>
+			  <%= f.id %>.
+			  <%= link_to f.title, f %>
+			<% end %>
+		</div>
+	</div>
+</div>
