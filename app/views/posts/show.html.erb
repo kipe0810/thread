@@ -2,7 +2,6 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 post-show">
 			<h2><strong><%= @post.title %></strong></h2>
-			<p><%= @post.body %></p>
 			<% if @post.user == current_user %>
 			  <%= link_to '削除', post_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
 			<% end %>
