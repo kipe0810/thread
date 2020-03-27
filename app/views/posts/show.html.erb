@@ -1,2 +1,30 @@
-<%= @post.title %>
-<%= @post.body %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2 post-show">
+			<table class="table">
+				<tr>
+					<th><h2><%= @post.title %></h2></th>
+				</tr>
+				<tr>
+					<td class="post-body"><%= @post.body %></td>
+				</tr>
+				<tr><%= @post.user.email %></tr>
+			</table>
+		</div>
+
+    <div class="col-xs-8 col-xs-offset-2 post-comment">
+    	<table class="table">
+    		<% @post.post_comments.each do |c| %>
+	    		<tr>
+	    			<td><%= c.comment %></td>
+	    		</tr>
+	    	<% end %>
+    	</table>
+		  <%= form_for [@post, @post_comment] do |f| %>
+		    <%= f.text_area :comment, class: "form-control", placeholder: "コメント" %>
+		    <%= f.submit '送信', class: "btn btn-default" %>
+		  <% end %>
+		</div>
+		<%= link_to '一覧へ', posts_path %>
+	</div>
+</div>

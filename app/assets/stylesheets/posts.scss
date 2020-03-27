@@ -17,8 +17,32 @@
 
 /*  posts/index  */
 .post-index {
-	background-color: gray;
+	background-color: silver;
 }
 .post-index-headline {
+	text-align: center;
+}
+
+
+/*  posts/show  */
+.post-show {
+	background-color: silver;
+	padding: 0;
+	margin: 30px 0;
+	th {
+		width: 100%;
+		background-color: black;
+		color: white;
+		text-align: center;
+	}
+	h2 {
+		text-align: center;
+	}
+}
+.post-body {
+	padding: 100px 50px;
+}
+
+.post-comment {
 	text-align: center;
 }

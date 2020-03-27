@@ -1,13 +1,25 @@
-<%= current_user.name %>
+<% if user_signed_in? %>
+  <%= current_user.email %>
+<% end %>
 
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 post-index">
 			<h1 class="post-index-headline">投稿一覧</h1>
-			<% @posts.each do |f| %>
-			  <%= f.id %>.
-			  <%= link_to f.title, f %>
-			<% end %>
+		  <table class="table">
+		  	<% @posts.each do|f| %>
+			  	<tr>
+			  		<td><%= link_to f.title, f %></td>
+			  	</tr>
+		  	<% end %>
+		  </table>
+		  <%= link_to '新規投稿', new_post_path %><br>
+		  <% if user_signed_in? %>
+		    <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+		  <% else %>
+		    <%= link_to 'ログイン', new_user_session_path %><br>
+		    <%= link_to '新規登録', new_user_registration_path %>
+		  <% end %>
 		</div>
 	</div>
 </div>
