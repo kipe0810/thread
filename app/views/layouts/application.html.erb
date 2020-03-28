@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <header>
+      <h1><strong>thread</strong></h1>
+      <div class="nav-list">
+        <% if user_signed_in? %>
+          <span><strong><%= link_to '新規投稿', new_post_path %></strong></span>
+          <span><strong><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></strong></span>
+        <% else %>
+          <span><strong><%= link_to 'ログイン', new_user_session_path %></strong></span>
+          <span><strong><%= link_to '新規登録', new_user_registration_path %></strong></span>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+        <p><%= current_user.email %></p>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -8,6 +8,17 @@
 						<th>タイトル</th>
 						<td><%= f.text_field :title, class: "form-control", style:"width: 70%;" %></td>
 					</tr>
+					<tr>
+						<th>カテゴリ</th>
+						<td>
+					    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |c| %>
+					      <%= c.label do %>
+					        <%= c.check_box %>
+					        <%= c.text %>
+					      <% end %>
+					    <% end %>
+						</td>
+					</tr>
 				</table>
 				<%= f.submit class: "btn btn-default" %>
 			<% end %>
