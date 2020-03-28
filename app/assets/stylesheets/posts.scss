@@ -37,11 +37,18 @@
 		color: white;
 		margin: 0;
 		padding: 10px;
+		margin-top: 10px;
 	}
 	p {
 		padding: 20px 30px;
 		border: solid 1px black;
 		word-wrap: break-word;
+	}
+	span {
+		font-size: 16px;
+		background-color: #DDDDDD;
+		padding: 5px;
+		border-radius: 10px;
 	}
 }
 .post-body {
@@ -58,6 +65,9 @@
 .comment-form {
 	text-align: center;
 	margin-top: 15px;
+	th {
+		text-align: center;
+	}
 }
 .comment {
 	width: 100%;

@@ -1,6 +1,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 post-show">
+			<% @post.categories.each do |c| %>
+			  <span><%= c.name %></span>
+			<% end %>
 			<h2><strong><%= @post.title %></strong></h2>
 			<% if @post.user == current_user %>
 			  <%= link_to '削除', post_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
@@ -24,13 +27,24 @@
 	    	<% end %>
     	</div>
     	<div class="col-xs-5 comment-form">
-    		<%= form_for [@post, @post_comment] do |f| %>
-    		  <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
-			    <%= f.text_area :comment, class: "form-control", placeholder: "コメント" %>
-			    <%= f.submit '送信', class: "btn btn-default" %>
-			  <% end %>
+    		
     	</div>
 		</div>
-		<%= link_to '一覧へ', posts_path %>
+
+		<div class="col-xs-8 col-xs-offset-2 comment-form">
+			<%= form_for [@post, @post_comment] do |f| %>
+			  <table class="table">
+			  	<tr>
+			  		<th>名前</th>
+			  		<td><%= f.text_field :name, class: "form-control", placeholder: "名前" %></td>
+			  	</tr>
+			  	<tr>
+			  		<th>本文</th>
+			  		<td><%= f.text_area :comment, class: "form-control", placeholder: "コメント" %></td>
+			  	</tr>
+			  </table>
+		    <%= f.submit '送信', class: "btn btn-default" %>
+		  <% end %>
+		</div>
 	</div>
 </div>
