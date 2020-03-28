@@ -22,7 +22,7 @@
         <% end %>
       </div>
       <% if user_signed_in? %>
-        <p><%= current_user.email %></p>
+        <p><%= current_user.email %> さんでログイン中</p>
       <% end %>
     </header>
     <%= yield %>

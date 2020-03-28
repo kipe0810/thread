@@ -13,7 +13,7 @@
     		<% @post.post_comments.each do |c| %>
 	    		<div class="comment">
 	    			<div class="comment-user clearfix">
-	    				<p>from <%= c.user.email %></p>
+	    				<p>from <%= c.name %></p>
 	    				<p><%= c.created_at.strftime('%Y/%m/%d %H:%M:%S') %></p>
 	    				<% if c.user == current_user %>
 	    			    <%= link_to '削除', post_post_comment_path(c), method: :delete, class: "btn btn-danger btn-xs" %>
@@ -25,6 +25,7 @@
     	</div>
     	<div class="col-xs-5 comment-form">
     		<%= form_for [@post, @post_comment] do |f| %>
+    		  <%= f.text_field :name, class: "form-control", placeholder: "名前" %>
 			    <%= f.text_area :comment, class: "form-control", placeholder: "コメント" %>
 			    <%= f.submit '送信', class: "btn btn-default" %>
 			  <% end %>
