@@ -1,14 +1,14 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 post-index">
-			<h1 class="post-index-headline">投稿一覧</h1>
-		  <table class="table">
-		  	<% @posts.each do|f| %>
-			  	<tr>
-			  		<td><%= link_to f.title, f %></td>
-			  	</tr>
-		  	<% end %>
-		  </table>
+			<%= render 'search/search' %>
+			<h3 class="post-index-headline"><strong>スレッド一覧</strong></h3>
+			<% @posts.each do |f| %>
+				<div class="post-index-titlearea">
+					<p class="created-at"><%= f.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+					<p class="post-index-title"><%= link_to f.title, f %></p>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

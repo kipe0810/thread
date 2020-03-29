@@ -23,9 +23,23 @@
 	background-color: silver;
 }
 .post-index-headline {
+	border-bottom: solid 2px black;
+	margin: 0;
+	padding: 20px 10px;
+}
+.post-index-title {
+	font-size: 16px;
 	text-align: center;
 }
-
+.created-at {
+	margin: 0;
+}
+.search-form {
+	text-align: center;
+}
+.post-index-titlearea {
+	border-bottom: solid 1px gray;
+}
 
 /*  posts/show  */
 .post-show {

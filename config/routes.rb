@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
 
   root :to => 'posts#index'
+  get '/result' => 'search#search', as: 'result'
 end

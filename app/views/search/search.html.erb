@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2 post-index">
+			<%= render 'search/search' %>
+			<h3 class="post-index-headline"><strong>"<%= @search %>"の検索結果</strong></h3>
+		  <table class="table">
+		  	<% @posts.each do|f| %>
+			  	<tr>
+			  		<td class="post-index-title"><%= link_to f.title, f %></td>
+			  	</tr>
+		  	<% end %>
+		  </table>
+		</div>
+	</div>
+</div>
