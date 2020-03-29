@@ -2,14 +2,25 @@
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 post-index">
 			<%= render 'search/search' %>
-			<h3 class="post-index-headline"><strong>"<%= @search %>"の検索結果</strong></h3>
-		  <table class="table">
-		  	<% @posts.each do|f| %>
-			  	<tr>
-			  		<td class="post-index-title"><%= link_to f.title, f %></td>
-			  	</tr>
-		  	<% end %>
-		  </table>
+
+			<% if @search.blank? %>
+			  <h3 class="post-index-headline"><strong>全件表示しています</strong></h3>
+			  <% @posts.each do |f| %>
+			    <div class="post-index-titlearea">
+						<p class="created-at"><%= f.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+						<p class="post-index-title"><%= link_to f.title, f %></p>
+					</div>
+			  <% end %>
+
+			<% else %>
+			  <h3 class="post-index-headline"><strong>"<%= @search %>"の検索結果</strong></h3>
+			  <% @posts.each do |f| %>
+			    <div class="post-index-titlearea">
+			    	<p class="created-at"><%= f.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+						<p class="post-index-title"><%= link_to f.title, f %></p>
+			    </div>
+			  <% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
