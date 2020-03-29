@@ -49,22 +49,27 @@
 	margin-bottom: 20px;
 	span {
 		font-size: 16px;
-		background-color: #EEEEEE;
+		background-color: #DDDDDD;
 		padding: 5px;
 		border-radius: 10px;
 		margin-left: 10px;
   }
   span:hover {
   	font-size: 16px;
-		background-color: #CCCCCC;
+		background-color: #BBBBBB;
 		padding: 5px;
 		border-radius: 10px;
   }
 }
 
 /*  posts/show  */
+.post-comment {
+	border: solid;
+}
 .post-show {
-	margin-top: 30px;
+	padding-left: 0;
+	width: 780px;
+	margin: 30px auto 0;
 	h2 {
 		text-align: center;
 		width: 100%;
@@ -84,6 +89,13 @@
 		background-color: #DDDDDD;
 		padding: 5px;
 		border-radius: 10px;
+		margin-left: 10px;
+	}
+	span:hover {
+		font-size: 16px;
+		background-color: #BBBBBB;
+		padding: 5px;
+		border-radius: 10px;
 	}
 }
 .post-body {
@@ -97,6 +109,12 @@
 .comment-form {
 	text-align: center;
 	margin-bottom: 50px;
+	h2 {
+		text-align: left;
+		border-bottom: solid 1px black;
+		margin: 0;
+		padding: 20px 0 10px 0;
+	}
 	th {
 		text-align: center;
 	}

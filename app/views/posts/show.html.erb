@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2 post-show">
+		<div class="post-show">
 			<% @post.categories.each do |c| %>
-			  <span><%= c.name %></span>
+			  <span><%= link_to c.name, category_path(c), style:"text-decoration: none; color: black;" %></span>
 			<% end %>
 			<h2><strong><%= @post.title %></strong></h2>
 		</div>
@@ -23,6 +23,7 @@
 		</div>
 
 		<div class="col-xs-8 col-xs-offset-2 comment-form">
+			<h2>コメントする</h2>
 			<%= form_for [@post, @post_comment] do |f| %>
 			  <table class="table">
 			  	<tr>
