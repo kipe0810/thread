@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2 post-index">
-			<%= render 'search/search' %>
+			<%= render 'search/search', categories: @categories %>
 
 			<% if @search.blank? %>
 			  <h3 class="post-index-headline"><strong>全件表示しています</strong></h3>

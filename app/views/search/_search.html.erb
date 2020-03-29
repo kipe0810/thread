@@ -4,3 +4,9 @@
 	  <%= submit_tag '検索', :name => nil, class: "btn btn-xs btn-default" %>
 	<% end %>
 </div>
+
+<div class="category-index">
+	<% categories.each do |c| %>
+	  <span><%= link_to c.name, category_path(c), style:"text-decoration: none; color: black;" %></span>
+	<% end %>
+</div>
