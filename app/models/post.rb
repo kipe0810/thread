@@ -7,7 +7,7 @@ class Post < ApplicationRecord
 	has_many :categories, through: :relations
 
 	def self.search(search)
-		if search
+		if search.present?
 			return Post.where(['title LIKE ?', "%#{search}%"]) + Post.joins(:post_comments).where(['post_comments.comment LIKE ?', "%#{search}%"]).distinct
 		else
 			Post.all
