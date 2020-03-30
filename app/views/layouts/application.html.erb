@@ -14,6 +14,7 @@
       <h1><strong><%= link_to "thread", root_path, class: "logo", style: "text-decoration: none;" %></strong></h1>
       <div class="nav-list">
         <% if user_signed_in? %>
+          <span><strong><%= link_to 'トップ', root_path %></strong></span>
           <span><strong><%= link_to '新規投稿', new_post_path %></strong></span>
           <span><strong><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></strong></span>
         <% else %>
@@ -22,7 +23,7 @@
         <% end %>
       </div>
       <% if user_signed_in? %>
-        <p><%= current_user.email %> さんでログイン中</p>
+        <p><%= current_user.email %> でログイン中</p>
       <% end %>
     </header>
     <%= yield %>

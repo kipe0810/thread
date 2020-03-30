@@ -9,6 +9,7 @@ class Post < ApplicationRecord
 	def self.search(search)
 		if search
 			Post.where(['title LIKE ?', "%#{search}%"])
+			Post.joins(:post_comments).where(['post_comments.comment LIKE ?', "%#{search}%"]).distinct
 		else
 			Post.all
 		end
