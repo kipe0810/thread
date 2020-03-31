@@ -33,23 +33,28 @@
 		<% end %>
     </div>
 
-		<div class="col-xs-8 col-xs-offset-2 comment-form">
-			<h2>書き込む</h2>
-			<%= form_for [@post, @post_comment] do |f| %>
-			  <table class="table">
-			  	<tr>
-			  		<th>名前</th>
-			  		<td><%= f.text_field :name, class: "form-control", placeholder: "名前", style:"width: 200px;" %></td>
-			  	</tr>
-			  	<tr>
-			  		<th>本文</th>
-			  		<td><%= f.text_area :comment, class: "form-control", placeholder: "コメント", style:"height: 100px;" %></td>
-			  	</tr>
-			  </table>
-		    <%= f.submit '送信', class: "btn btn-default" %>
-		  <% end %>
-		</div>
-
-    
+    <% if user_signed_in? %>
+			<div class="col-xs-8 col-xs-offset-2 comment-form">
+				<h2>書き込む</h2>
+				<%= form_for [@post, @post_comment] do |f| %>
+				  <table class="table">
+				  	<tr>
+				  		<th>名前</th>
+				  		<td><%= f.text_field :name, class: "form-control", placeholder: "名前", style:"width: 200px;" %></td>
+				  	</tr>
+				  	<tr>
+				  		<th>本文</th>
+				  		<td><%= f.text_area :comment, class: "form-control", placeholder: "コメント", style:"height: 100px;" %></td>
+				  	</tr>
+				  </table>
+			    <%= f.submit '送信', class: "btn btn-default" %>
+			  <% end %>
+			</div>
+		<% else %>
+		  <div class="col-xs-8 col-xs-offset-2 comment-form-login">
+		  	<h3>書き込むには、ログインしてください。</h3>
+		  	<span><%= link_to 'ログイン', new_user_session_path, class: "btn btn-primary" %></span>
+		  </div>
+		<% end %>
 	</div>
 </div>
