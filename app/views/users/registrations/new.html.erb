@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3 login-area">
+      <div class="login-form">
+        <h2>新規登録</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+          <table class="table">
+            <tr>
+              <th>Email</th>
+              <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", style:"width: 70%;" %></td>
+            </tr>
+            <tr>
+              <th>Password</th>
+              <td>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", style:"width: 70%;" %>
+              </td>
+            </tr>
+            <tr>
+              <th>パスワード確認</th>
+              <td><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", style:"width: 70%;" %></td>
+            </tr>
+          </table>
+          <%= f.submit "ログイン", class: "btn btn-default" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
