@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!,  only: [:new, :destroy]
+
   def index
   	@posts = Post.all
   	@categories = Category.all
@@ -28,9 +30,18 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
+
+  private
+    def post_params
+      params.require(:post).permit(:title, category_ids: [])
+    end
+
+    def current_user!
+      @post = Post.find(params[:id])
+      if @post.user != current_user
+        redirect_to posts_path
+      end
+  end
 end
 
-private
-  def post_params
-  	params.require(:post).permit(:title, category_ids: [])
-  end
+
