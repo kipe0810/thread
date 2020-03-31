@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!,  only: [:new, :destroy]
 
   def index
-  	@posts = Post.all
+  	@posts = Post.all.order(created_at: :desc)
   	@categories = Category.all
   end
 

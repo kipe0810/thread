@@ -10,9 +10,9 @@ class Post < ApplicationRecord
 
 	def self.search(search)
 		if search.present?
-			return Post.where(['title LIKE ?', "%#{search}%"]) + Post.joins(:post_comments).where(['post_comments.comment LIKE ?', "%#{search}%"]).distinct
+			return Post.where(['title LIKE ?', "%#{search}%"]).order(created_at: :desc) + Post.joins(:post_comments).where(['post_comments.comment LIKE ?', "%#{search}%"]).order(created_at: :desc).distinct
 		else
-			Post.all
+			Post.all.order(created_at: :desc)
 		end
 	end
 end

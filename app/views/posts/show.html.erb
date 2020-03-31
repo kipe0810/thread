@@ -8,22 +8,33 @@
 		</div>
 
     <div class="col-xs-8 col-xs-offset-2 post-comment">
-  		<% @post.post_comments.each do |c| %>
-    		<div class="comment">
-    			<div class="comment-user clearfix">
-    				<span><%= c.created_at.strftime('%Y年%m月%d日 %H時%M分') %></span>
-    				<span>from <%= c.name %></span>
-    				<% if c.user == current_user %>
-    			    <%= link_to '削除', post_post_comment_path(@post,c), method: :delete, class: "btn btn-danger btn-xs" %>
-    			  <% end %>
-    			</div>
-    			<p><%= c.comment %></p>
-    		</div>
-    	<% end %>
+    	<% if @post.post_comments.present? %>
+	  		<% @post.post_comments.each do |c| %>
+	    		<div class="comment">
+	    			<div class="comment-user clearfix">
+	    				<span><%= c.created_at.strftime('%Y年%m月%d日 %H時%M分') %></span>
+	    				<span>from <%= c.name %></span>
+	    				<% if c.user == current_user %>
+	    			    <%= link_to '削除', post_post_comment_path(@post,c), method: :delete, class: "btn btn-danger btn-xs" %>
+	    			  <% end %>
+	    			</div>
+	    			<p><%= c.comment %></p>
+	    		</div>
+	    	<% end %>
+	    <% else %>
+	      <div class="comment">
+	      	<p>まだ書き込みがありません。</p>
+	      </div>
+	    <% end %>
 		</div>
+		<div class="col-xs-8 col-xs-offset-2 thread-delete">
+    	<% if @post.user == current_user %>
+		  <%= link_to 'スレッド削除', post_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+		<% end %>
+    </div>
 
 		<div class="col-xs-8 col-xs-offset-2 comment-form">
-			<h2>コメントする</h2>
+			<h2>書き込む</h2>
 			<%= form_for [@post, @post_comment] do |f| %>
 			  <table class="table">
 			  	<tr>
@@ -39,8 +50,6 @@
 		  <% end %>
 		</div>
 
-		<% if @post.user == current_user %>
-		  <%= link_to '削除', post_path, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
-		<% end %>
+    
 	</div>
 </div>
