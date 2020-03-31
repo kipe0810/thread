@@ -16,6 +16,7 @@
         <% if user_signed_in? %>
           <span><strong><%= link_to 'トップ', root_path %></strong></span>
           <span><strong><%= link_to '新規投稿', new_post_path %></strong></span>
+          <span><strong><%= link_to 'カテゴリ追加', new_category_path %></strong></span>
           <span><strong><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></strong></span>
         <% else %>
           <span><strong><%= link_to 'ログイン', new_user_session_path %></strong></span>

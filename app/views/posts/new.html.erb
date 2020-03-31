@@ -11,12 +11,16 @@
 					<tr>
 						<th>カテゴリ</th>
 						<td>
-					    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |c| %>
-					      <%= c.label do %>
-					        <%= c.check_box %>
-					        <%= c.text %>
-					      <% end %>
-					    <% end %>
+							<% if @categories.present? %>
+						    <%= f.collection_check_boxes(:category_ids, @categories, :id, :name) do |c| %>
+						      <%= c.label do %>
+						        <%= c.check_box %>
+						        <%= c.text %>
+						      <% end %>
+						    <% end %>
+						  <% else %>
+						    <p style="text-align: left;"><%= link_to 'カテゴリを追加する▶︎', new_category_path %></p>
+						  <% end %>
 						</td>
 					</tr>
 				</table>

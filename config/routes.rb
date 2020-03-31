@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   	resources :post_comments, only: [:create, :destroy]
   end
 
-  resources :categorys, only: [:show]
+  resources :categories, only: [:show, :new, :create]
 
   root :to => 'posts#index'
   get '/result' => 'search#search', as: 'result'
